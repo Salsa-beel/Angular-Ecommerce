@@ -24,7 +24,7 @@ customers = [
 
 link = "https:www.google.com"
 
-title  = "Code with Salsabeel"
+title  = "The store is opened"
 number=0;
 Names = ["hadeer" , "hadeer","hadeer","hadeer"]
 
@@ -58,5 +58,10 @@ get()
 {
   return 5>6;
 }
+
+gender = true ;
+
+// functions
+
 
 }

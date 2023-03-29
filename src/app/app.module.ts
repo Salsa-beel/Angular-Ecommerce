@@ -9,15 +9,17 @@ import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { HomeComponent } from './Components/home/home.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CartComponent } from './Components/cart/cart.component';
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
     HomeComponent,
-    ProductsComponent
+    ProductsComponent,
+    CartComponent
    ],
 
   imports: [

@@ -1,13 +1,21 @@
+
+  <div class="row">
+    <div class="d-flex">
+      <img class="img-fluid h-50 w-100" src="assets/pic1.jpeg">
+    </div>
+
+  </div>
+
 <div class=" alert alert-primary " *ngIf="toggle"> {{title}}</div>
 
-<a class="btn btn-primary" (click)="changeToggle()">{{text}}</a>
+<a class="btn btn-primary m-5" (click)="changeToggle()">{{text}}</a>
 
 <div class="container-fluid mt-3 p-5 ">
   <!-- <div> <button class=" btn btn-primary" (click)="changeToggle()"> change </button></div> -->
 
-<table class="table table-primary ">
+<!-- <table class="table table-primary ">
 
-  <!-- row -->
+
 
     <thead>
       <tr class="table-dark">
@@ -20,7 +28,7 @@
   </thead>
 
 
-  <!-- 2nd row -->
+
   <tbody class="table-group-divider">
   <tr *ngFor="let item of customers">
     <td>{{item.ssn}}</td>
@@ -43,6 +51,6 @@
 
   </tr>
 </tbody>
-</table>
+</table> -->
 </div>
 

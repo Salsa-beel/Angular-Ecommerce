@@ -41,9 +41,10 @@
           <ul class="list-unstyled mt-3 mb-4">
             <li>{{item.title}}</li>
             <li> <strong>Price </strong>{{item.price}}</li>
+            
           </ul>
 
-          <button type="button" class="w-100 btn btn-lg btn-primary">Add to cart</button>
+          <button type="button" class="w-100 btn btn-lg btn-primary" (click)="addtoCart(productList)">Add to cart</button>
         </div>
       </div>
     </div>

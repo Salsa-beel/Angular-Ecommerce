@@ -1,56 +1,65 @@
+<ng-container *ngIf="products.length !=0">
 
-<ng-container *ngIf="true">
+  <div class="container-fluid m-5 px-5">
 
-<div class="container">
+    <div class="card-table">
 
-  <div class="card-table">
+      <div class=" cart-product">
+        <table class="table table-primary ">
 
-    <div class=" cart-product">
-      <table class="table table-primary ">
-
-        <!-- row -->
+          <!-- row -->
 
           <thead>
             <tr class="table-dark">
-          <th scope="col">id</th>
-          <th scope="col">Product Name</th>
-          <th scope="col">Product Image</th>
-          <th scope="col">Description</th>
-          <th scope="col">Price</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Total</th>
-          <th scope="col">Action</th>
-        </tr>
-        </thead>
+              <th scope="col">id</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Product Image</th>
+              <th scope="col">Description</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
 
 
-        <!-- 2nd row -->
-        <tbody class="table-group-divider">
-        <tr>
-          <td>1</td>
-          <td>iphone </td>
-          <td>Image</td>
-          <td>this is branded phone</td>
-          <td>20,000</td>
-          <td>1</td>
-          <td>20,000</td>
-      <td>
-        <button class=" btn btn-danger  m-2"> Delete</button>
-       </td>
+          <!-- 2nd row -->
+          <tbody style="width:15%;" class="container ">
+            <tr *ngFor="let item of products, let i= index">
+              <td>{{i+1}}</td>
+              <td>{{item.title}} </td>
+              <td> <img style="width: 20px;" src="{{item.image}}" alt=""> </td>
+              <td style="width:25% ;">{{item.description}}</td>
+              <td>{{item.price}}</td>
+              <td>{{item.quantity}}</td>
+              <td>{{item.total}}</td>
+              <td>
+                <button (click)="removeItem(item)" class=" btn btn-danger  m-2"> Delete</button>
+              </td>
 
-        </tr>
-      </tbody>
-      </table>
+            </tr>
+
+            <div class="row m-5">
+
+            <button  (click)="emptyCart()" class=" btn bg-warning m-3"> Empty Cart</button>
+             <button routerLink="/products" class=" btn bg-success m-3"> Shop More</button>
+           <button class=" btn bg-danger m-3">Checkout</button>
+            <strong> Grand Total : ${{grandTotal}}</strong>
+
+
+          </div>
+          </tbody>
+        </table>
+      </div>
+
     </div>
 
   </div>
 
-</div>
-
 </ng-container>
 
 
-<ng-container *ngIf="false">
+<ng-container *ngIf="products.length ==0">
 
   <div class=" container col-md-7 col-lg-7 order-md-last m-5">
     <div class="card justify-content-between align-items-center mb-3">
@@ -59,7 +68,7 @@
       <div class="card border-0 p-2 ">
         <div class="input-group ">
 
-          <button type="submit" class="btn btn-primary  ">Shop Now</button>
+          <button routerLink="/products" type="submit" class="btn btn-primary  ">Shop Now</button>
         </div>
       </div>
     </div>

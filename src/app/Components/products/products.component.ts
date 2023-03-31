@@ -46,6 +46,11 @@ cartProducts:any[] = []; // 3ayza ageb el data mn local storage w a7otaha fe arr
 
   }
 
+
+
+
+
+
   getAllProducts(){
     this.service.getAllProducts().subscribe((res:any)=>{
 

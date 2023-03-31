@@ -8,24 +8,76 @@ import { CartService } from 'src/app/service/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  public products : any = [];
-  public grandTotal !: number ;
-  constructor( private cartService : CartService) { }
 
+
+  constructor( ) { }
+
+  cartProducts:any[]= [];
+  total:number=0;
   ngOnInit() : void {
-    this.cartService.getProduct()
-    .subscribe(res=>{
-      this.products = res;
-      this.grandTotal = this.cartService.getTotalPrice();
-    }
-      )
-  }
-  removeItem(item:any) {
-    this.cartService.removeCartItem(item);
+
+    this.getCartProducts()
+
   }
 
-  emptyCart() {
-    this.cartService.removeAllCart();
+  getCartProducts(){
+
+    if ("cart" in localStorage){
+      this.cartProducts = JSON.parse(localStorage.getItem("cart")!)
   }
+
+  this. getCartTotal()
+  }
+
+
+
+  addAmount (index:number){
+    this.cartProducts[index].quantity++
+    this. getCartTotal()
+    localStorage.setItem("cart", JSON.stringify(this.cartProducts))
+
+  }
+  minsAmount (index:number){
+    this.cartProducts[index].quantity--
+    this. getCartTotal()
+    localStorage.setItem("cart", JSON.stringify(this.cartProducts))
+
+  }
+
+  detectChange(){
+    this. getCartTotal() // update el total price el gdid
+    localStorage.setItem("cart", JSON.stringify(this.cartProducts))
+  }
+
+
+  deleteProduct(index:number){
+    this. getCartTotal() // bandah el method bta3t get total
+
+    this.cartProducts.splice(index,1)
+    localStorage.setItem("cart", JSON.stringify(this.cartProducts))
+
+  }
+
+  getCartTotal(){
+    this.total=0
+    for(let x in this.cartProducts){
+      this.total += this.cartProducts[x].item.price * this.cartProducts[x].quantity
+    }
+  }
+
+  clearCart(){
+    this.cartProducts =[]
+    this. getCartTotal() // update el total price el gdid
+    localStorage.setItem("cart", JSON.stringify(this.cartProducts))
+
+  }
+
+  // removeItem(item:any) {
+  //   this.cartService.removeCartItem(item);
+  // }
+
+  // emptyCart() {
+  //   this.cartService.removeAllCart();
+  // }
 
 }

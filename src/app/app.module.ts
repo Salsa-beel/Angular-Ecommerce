@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './Components/cart/cart.component';
 import { SelectComponent } from './Components/select/select.component';
 import { OneProductComponent } from './Components/OneProduct/OneProduct.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { OneProductComponent } from './Components/OneProduct/OneProduct.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

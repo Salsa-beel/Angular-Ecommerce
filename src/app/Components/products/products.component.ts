@@ -30,7 +30,7 @@ cartProducts:any[] = []; // 3ayza ageb el data mn local storage w a7otaha fe arr
     //  JSON.parse()  //receive Data zy ma ana b3etha bzabt
     if ("cart" in localStorage){
       this.cartProducts = JSON.parse(localStorage.getItem("cart")!) // hena my3rfsh eh el cart de asln mwgoda wla la fel local storage 3ashan ygeb mnha el data
-      let exist = this.cartProducts.find(item => item.id == event.id) // lw l2et ay item = el event id 5azeno fel exist
+      let exist = this.cartProducts.find(item => item.item.id == event.item.id) // lw l2et ay item = el event id 5azeno fel exist
       if(exist){
         alert(" Product is already in your cart")
       }else {

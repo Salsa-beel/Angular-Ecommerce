@@ -24,6 +24,12 @@ getProductsByCategory(keyword:string){
 
 }
 
+getProductsById(id:any){
+  return this.http.get(`https://fakestoreapi.com/products/`+ id)
+
+}
+
+
 
 
 }

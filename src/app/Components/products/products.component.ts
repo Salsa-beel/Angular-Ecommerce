@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products.service';
 import { CartService } from 'src/app/service/cart.service';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-products',
@@ -9,10 +10,11 @@ import { CartService } from 'src/app/service/cart.service';
 })
 export class ProductsComponent implements OnInit {
 
-  products : any [] = [];
-catgories :any[]=[];
+products : any [] = [];
+categories :any[]=[];
 grandTotal: any;
-categories: any;
+cartProducts:any[] = []; // 3ayza ageb el data mn local storage w a7otaha fe array esmo cart fa hena 3arft el array
+
   constructor( private service :ProductsService, private cartService :CartService ) { }
 
   ngOnInit():void {
@@ -21,8 +23,27 @@ categories: any;
   }
 
 
-  addtoCart(item: any){
-this.cartService.addtoCart(item);
+  addtoCart(event: any){
+
+
+    //  JSON.stringify() //Send Data zy ma ana b3etha bzabt
+    //  JSON.parse()  //receive Data zy ma ana b3etha bzabt
+    if ("cart" in localStorage){
+      this.cartProducts = JSON.parse(localStorage.getItem("cart")!) // hena my3rfsh eh el cart de asln mwgoda wla la fel local storage 3ashan ygeb mnha el data
+      let exist = this.cartProducts.find(item => item.id == event.id) // lw l2et ay item = el event id 5azeno fel exist
+      if(exist){
+        alert(" Product is already in your cart")
+      }else {
+        this.cartProducts.push(event) // hena b push el products el 3ayzaha fel cart
+        localStorage.setItem("cart", JSON.stringify(this.cartProducts)) //  hena b send kol el fel cart zy ma hwa mn gher tagheer
+        }
+     }
+      else {
+        this.cartProducts.push(event) // hena b push el products el 3ayzaha fel cart
+      localStorage.setItem("cart", JSON.stringify(this.cartProducts)) //  hena b send kol el fel cart zy ma hwa mn gher tagheer
+
+      }
+
   }
 
   getAllProducts(){
@@ -71,4 +92,7 @@ this.cartService.addtoCart(item);
 
     })
   }
+
+
+
 }

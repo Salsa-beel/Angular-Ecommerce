@@ -10,6 +10,8 @@ import { HomeComponent } from './Components/home/home.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './Components/cart/cart.component';
+import { SelectComponent } from './Components/select/select.component';
+import { OneProductComponent } from './Components/OneProduct/OneProduct.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CartComponent } from './Components/cart/cart.component';
     SidebarComponent,
     HomeComponent,
     ProductsComponent,
-    CartComponent
+    CartComponent, // child component
+    SelectComponent, // child component
+    OneProductComponent // child component
    ],
 
   imports: [

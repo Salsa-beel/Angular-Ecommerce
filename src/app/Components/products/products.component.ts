@@ -17,7 +17,7 @@ categories: any;
 
   ngOnInit():void {
     this.getAllProducts()
-    this.getAllCategories()
+    this.getCategories()
   }
 
 
@@ -35,18 +35,40 @@ this.cartService.addtoCart(item);
   }
 
 
-  getAllCategories(){
+  getCategories(){
     this.service.getAllCategories().subscribe((res:any)=>{
       console.log(res)
-    this.categories=res // kol da fe 7alet el success
-  }, error =>{
-    alert("Error") // da fe 7alet el error
-  }     )
+    this.categories=res  // kol da fe 7alet el success
+    })
+  // }, error =>{
+  //   alert("Error") // da fe 7alet el error
+  // }     )
   }
 
   filterCategory(event : any) {
 
     let value = event.target.value;
-    console.log(value)
+    if(value == "all")
+    {
+      this.getAllProducts()
+    } else {
+      this.getProductsCategory(value)
+    }
+
+  }
+
+  AllCategory(event : any) {
+
+    let value = event.target.value;
+    this.getProductsCategory(value)
+
+  }
+
+  getProductsCategory(keyword : string){
+
+    this.service.getProductsByCategory(keyword).subscribe( (res: any) =>{
+      this.products = res
+
+    })
   }
 }

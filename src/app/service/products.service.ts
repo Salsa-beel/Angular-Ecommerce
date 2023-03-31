@@ -15,10 +15,14 @@ getAllProducts(){
 }
 
 getAllCategories(){
-  return this.http.get("https://fakestoreapi.com/products/categories")
+  return this.http.get("https://fakestoreapi.com/products/categories/")
 
 }
 
+getProductsByCategory(keyword:string){
+  return this.http.get(`https://fakestoreapi.com/products/category/`+ keyword)
+
+}
 
 
 

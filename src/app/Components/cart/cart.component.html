@@ -43,20 +43,21 @@
               </td>
 
             </tr>
+            <strong> Grand Total : {{total}}</strong>
 
             <div class="row m-5">
 
             <button  class=" btn bg-warning m-3" (click)="clearCart()"> Empty Cart</button>
              <button routerLink="/products" class=" btn bg-success m-3"> Shop More</button>
-           <button class=" btn bg-danger m-3">Checkout</button>
-            <strong> Grand Total : {{total}}</strong>
+           <button class=" btn bg-danger m-3" (click)="addCart()">Checkout</button>
+
 
 
           </div>
           </tbody>
         </table>
       </div>
-
+      <div class="alert alert-success" role="alert" *ngIf="success"> Your Order has placed successfully</div>
     </div>
 
   </div>

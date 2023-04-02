@@ -10,10 +10,13 @@ export class CartComponent implements OnInit {
 
 
 
-  constructor( ) { }
+  constructor( private service : CartService) { }
 
   cartProducts:any[]= [];
   total:number=0;
+  success: boolean = false
+
+
   ngOnInit() : void {
 
     this.getCartProducts()
@@ -71,6 +74,26 @@ export class CartComponent implements OnInit {
     localStorage.setItem("cart", JSON.stringify(this.cartProducts))
 
   }
+
+  addCart() {
+
+    let products = this.cartProducts.map( item => // map hat3mel array gdid
+      {
+       return {productId:item.item.id , quantity:item.quantity}
+
+      })
+      let Model = {
+        userId:5,
+        date : new Date(),
+        products:[]
+      }
+
+      this.service.createNewCart(Model).subscribe(res => {
+        this.success = true
+      })
+      console.log(Model)
+  }
+
 
   // removeItem(item:any) {
   //   this.cartService.removeCartItem(item);

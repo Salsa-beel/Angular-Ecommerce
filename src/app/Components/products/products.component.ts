@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products.service';
 import { CartService } from 'src/app/service/cart.service';
 import { JsonPipe } from '@angular/common';
+import { Product } from 'src/app/Models/product';
 
 @Component({
   selector: 'app-products',
@@ -10,8 +11,8 @@ import { JsonPipe } from '@angular/common';
 })
 export class ProductsComponent implements OnInit {
 
-products : any [] = [];
-categories :any[]=[];
+products : Product [] = [];
+categories :string[]=[];
 grandTotal: any;
 cartProducts:any[] = []; // 3ayza ageb el data mn local storage w a7otaha fe array esmo cart fa hena 3arft el array
 

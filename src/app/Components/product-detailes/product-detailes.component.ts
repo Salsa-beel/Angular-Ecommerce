@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/Models/product';
 import { ProductsService } from 'src/app/service/products.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ProductsService } from 'src/app/service/products.service';
 export class ProductDetailesComponent implements OnInit {
 
 id:any
-data:any = []
+data!: Product
 
 
   constructor(private route:ActivatedRoute , private service:ProductsService) {
@@ -26,7 +27,7 @@ data:any = []
 
 
   getProduct(){
-    this.service.getProductsById(this.id).subscribe(res => {
+    this.service.getProductsById(this.id).subscribe((res:any) => {
       this.data = res
     })
 

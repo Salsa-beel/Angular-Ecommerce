@@ -11,39 +11,45 @@
 
           <thead>
             <tr class="table-dark">
-
-
-              <th scope="col">Date</th>
-
+              <th scope="col">id</th>
+              <th scope="col">Product Image</th>
+              <th scope="col">Product Name</th>
+              <th scope="col" style="width:25%">Price</th>
               <th scope="col" style=" width: 25%">Quantity</th>
-
+              <!-- <th scope="col">Total</th> -->
               <th scope="col">Action</th>
-
             </tr>
           </thead>
 
 
           <!-- 2nd row -->
            <tbody>
-            <tr *ngFor="let item of carts; let index=index">
-              <td>{{item.date | date:"shortDate"}}</td>
+            <tr *ngFor="let item of cartProducts; let index=index">
+              <td> <img style="width: 100px;" src="{{item.item .image}}" alt=""> </td>
+              <td>{{item.item.title}} </td>
+
+              <!-- <td style="width:25% ;">{{item.item.description}}</td> -->
+              <td>{{item.item.price}}</td>
               <td>
-                 {{item.quantity}}
+                 <div class="quantity">
+                 <button class="btn btn-dark mb-2" (click)="addAmount(index)"> +</button>
+                  <input class="form-control" type="number" (change)="detectChange()" [(ngModel)]=item.quantity min="1">
+                  <button class="btn btn-dark mt-2"(click)="minsAmount(index)" >-</button>
+                </div>
               </td>
-              <!-- <td>{{item.item.price * item.quantity}} EG</td> -->
+              <td>{{item.item.price * item.quantity}} EG</td>
               <td>
-                <button class=" btn btn-danger  m-2" > Delete</button>
-                <button class=" btn btn-success  m-2"> View</button>
+                <button class=" btn btn-danger  m-2" (click)="deleteProduct(index)"> Delete</button>
               </td>
 
             </tr>
-
+            <strong> Grand Total : {{total}}</strong>
 
             <div class="row m-5">
 
-            <!-- <button  class=" btn bg-warning m-3" > Empty Cart</button>
+            <button  class=" btn bg-warning m-3" (click)="clearCart()"> Empty Cart</button>
              <button routerLink="/products" class=" btn bg-success m-3"> Shop More</button>
-           <button class=" btn bg-danger m-3" >Checkout</button> -->
+           <button class=" btn bg-danger m-3" (click)="addCart()">Checkout</button>
 
 
 
@@ -51,7 +57,7 @@
           </tbody>
         </table>
       </div>
-
+      <div class="alert alert-success" role="alert" *ngIf="success"> Your Order has placed successfully</div>
     </div>
 
   </div>
@@ -59,7 +65,7 @@
 </ng-container>
 
 
-<!-- <ng-container>
+<ng-container>
 
   <div class=" container col-md-7 col-lg-7 order-md-last m-5">
     <div class="card justify-content-between align-items-center mb-3">
@@ -74,4 +80,4 @@
     </div>
   </div>
 
-</ng-container> -->
+</ng-container>

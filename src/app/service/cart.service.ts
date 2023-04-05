@@ -8,8 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
 constructor(private http:HttpClient) { }
 
-createNewCart(model : any){
+getAllCarts(){
 
-  return this.http.post('https://fakestoreapi.com/carts', model)
+  return this.http.get('https://fakestoreapi.com/carts/')
+}
 
-}}
+}
